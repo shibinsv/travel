@@ -283,27 +283,25 @@ class FlightsUI extends StatelessWidget {
                 text: StringConstants.flightsHeader, color: Colors.black),
             const SizedBox(height: 30.0),
             Container(
-              height: MediaQuery.of(context).size.height,
+              height: 50,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.grey[500]),
               child: DefaultTabController(
                 length: 3,
-                child: Scaffold(
-                  body: Column(
-                    children: [
-                      TabBar(
-                          indicator: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: Colors.deepOrange),
-                          // ignore: prefer_const_literals_to_create_immutables
-                          tabs: [
-                            const Tab(text: StringConstants.flightsOneWay),
-                            const Tab(text: StringConstants.flightsRound),
-                            const Tab(text: StringConstants.flightsMulticity)
-                          ]),
-                    ],
-                  ),
+                child: Column(
+                  children: [
+                    TabBar(
+                        indicator: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: Colors.deepOrange),
+                        // ignore: prefer_const_literals_to_create_immutables
+                        tabs: [
+                          const Tab(text: StringConstants.flightsOneWay),
+                          const Tab(text: StringConstants.flightsRound),
+                          const Tab(text: StringConstants.flightsMulticity)
+                        ]),
+                  ],
                 ),
               ),
             ),
