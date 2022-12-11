@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<SavedItemsBloc>(create: ((context) => SavedItemsBloc())),
       ],
       child: MaterialApp(
+        title: "Travelty",
           debugShowCheckedModeBanner: false,
           home: const SplashScreen(), //for example splashScreen,
           theme: ThemeData()),

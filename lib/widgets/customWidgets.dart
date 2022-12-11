@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:initial_test/utils/constants.dart';
@@ -146,6 +145,28 @@ class TitleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(text,
         style: TextStyle(
-            fontSize: fontSize, fontWeight: FontWeight.bold, color: color,));
+          fontSize: fontSize,
+          fontWeight: FontWeight.bold,
+          color: color,
+        ));
+  }
+}
+
+class CustomTextField extends StatelessWidget {
+  final String? hint;
+  const CustomTextField({Key? key, this.hint}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+        style: TextStyle(fontSize: 12),
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: Colors.grey[200],
+          hintText: hint ?? "",
+          enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(width: 1, color: Colors.grey)),
+          focusedBorder: const OutlineInputBorder(
+              borderSide: BorderSide(width: 1, color: Colors.deepOrange)),
+        ));
   }
 }

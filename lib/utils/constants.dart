@@ -12,12 +12,16 @@ class StringConstants {
   static const String famousPlaces = "Famous places";
   static const String viewAll = "View all";
 
-    //flights
+  //flights
   static const String flightsHeader = "Book your flights";
   static const String flightsOneWay = "One way";
   static const String flightsRound = "Round trip";
   static const String flightsMulticity = "Multicity";
 
+  static const String from = "From";
+  static const String to = "To";
+  static const String startDestination = "Departure at";
+  static const String endDestination = "Arrival at";
 }
 
 class AppColors {
@@ -44,6 +48,8 @@ class ImagePath {
   static const String paris = "${imagePath}place_paris$pathExtension";
   static const String shanghai = "${imagePath}place_shan$pathExtension";
 
+
+  static const String swap = "${imagePath}swap.png";
 }
 
 class LoginFunctions {

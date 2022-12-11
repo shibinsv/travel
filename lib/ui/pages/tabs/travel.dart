@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -271,65 +273,59 @@ class PlacesUI extends StatelessWidget {
 class FlightsUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _controller = PageController();
-    final StreamController<int> tabChangeNotifier = StreamController();
-
-    return SingleChildScrollView(
-      child: Container(
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15), color: Colors.white),
-        child: Column(
-          // ignore: prefer_const_literals_to_create_immutables
-          children: [
-            const TitleText(
-                text: StringConstants.flightsHeader, color: Colors.black),
-            const SizedBox(height: 30.0),
-            Container(
-              height: MediaQuery.of(context).size.height,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  color: Colors.grey[500]),
-              child: DefaultTabController(
-                length: 3,
-                child: Column(
-                  children: [
-                    TabBar(
-                        controller: DefaultTabController.of(context),
-                        indicator: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: Colors.deepOrange),
-                        // ignore: prefer_const_literals_to_create_immutables
-                        tabs: [
-                          const Tab(text: StringConstants.flightsOneWay),
-                          const Tab(text: StringConstants.flightsRound),
-                          const Tab(text: StringConstants.flightsMulticity)
-                        ]),
-                    Expanded(
-                        child: TabBarView(
+    return Container(
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15), color: Colors.white),
+      child: Column(
+        children: [
+          const TitleText(
+              text: StringConstants.flightsHeader, color: Colors.black),
+          const SizedBox(height: 30.0),
+          Container(
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: Colors.grey[500]),
+            child: DefaultTabController(
+              length: 3,
+              child: Column(
+                children: [
+                  TabBar(
                       controller: DefaultTabController.of(context),
-                      children: [
-                        TripUI(),
-                        Container(
-                          child: const Text(" round trip view"),
-                        ),
-                        Container(
-                          child: const Text("ulticity view"),
-                        ),
-                      ],
-                    ))
-                  ],
-                ),
+                      indicator: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: Colors.deepOrange),
+                      tabs: [
+                        const Tab(text: StringConstants.flightsOneWay),
+                        const Tab(text: StringConstants.flightsRound),
+                        const Tab(text: StringConstants.flightsMulticity)
+                      ]),
+                  Expanded(
+                      child: TabBarView(
+                    controller: DefaultTabController.of(context),
+                    children: [
+                      TripUI(),
+                      Container(
+                        child: const Text(" round trip view"),
+                      ),
+                      Container(
+                        child: const Text("ulticity view"),
+                      ),
+                    ],
+                  ))
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 }
 
 class TripUI extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -338,11 +334,20 @@ class TripUI extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 30),
-          TitleText(
-            text: "From",
-            fontSize: 15.0,
-            color: Colors.black,
+          const TitleText(
+              text: StringConstants.from, fontSize: 13.0, color: Colors.black),
+          const SizedBox(height: 10),
+          const CustomTextField(hint: StringConstants.startDestination),
+          const SizedBox(height: 20),
+          Center(
+            child: Image.asset(ImagePath.swap, height: 30, width: 30),
           ),
+          const SizedBox(height: 5),
+          const TitleText(
+              text: StringConstants.to, fontSize: 13.0, color: Colors.black),
+          const SizedBox(height: 10),
+          const CustomTextField(hint: StringConstants.endDestination),
+          const SizedBox(height: 5),
         ],
       ),
     );
