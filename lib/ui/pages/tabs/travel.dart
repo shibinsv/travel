@@ -44,7 +44,7 @@ class TravelTabPage extends StatelessWidget {
                     case 1:
                       return FlightsUI();
                     default:
-                      return SizedBox(height: 30);
+                      return const SizedBox(height: 30);
                   }
                   // return (selectedIndex == 0) ? PlacesUI() : SizedBox(height: 30);
                 },
@@ -271,6 +271,9 @@ class PlacesUI extends StatelessWidget {
 class FlightsUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final _controller = PageController();
+    final StreamController<int> tabChangeNotifier = StreamController();
+
     return SingleChildScrollView(
       child: Container(
         padding: const EdgeInsets.all(10),
@@ -283,17 +286,18 @@ class FlightsUI extends StatelessWidget {
                 text: StringConstants.flightsHeader, color: Colors.black),
             const SizedBox(height: 30.0),
             Container(
-              height: 50,
+              height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(5),
                   color: Colors.grey[500]),
               child: DefaultTabController(
                 length: 3,
                 child: Column(
                   children: [
                     TabBar(
+                        controller: DefaultTabController.of(context),
                         indicator: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(5),
                             color: Colors.deepOrange),
                         // ignore: prefer_const_literals_to_create_immutables
                         tabs: [
@@ -301,24 +305,23 @@ class FlightsUI extends StatelessWidget {
                           const Tab(text: StringConstants.flightsRound),
                           const Tab(text: StringConstants.flightsMulticity)
                         ]),
+                    Expanded(
+                        child: TabBarView(
+                      controller: DefaultTabController.of(context),
+                      children: [
+                        TripUI(),
+                        Container(
+                          child: const Text(" round trip view"),
+                        ),
+                        Container(
+                          child: const Text("ulticity view"),
+                        ),
+                      ],
+                    ))
                   ],
                 ),
               ),
             ),
-            // Expanded(
-            //     child: TabBarView(
-            //   children: [
-            //     Container(
-            //       child: Text("m"),
-            //     ),
-            //     Container(
-            //       child: Text("m"),
-            //     ),
-            //     Container(
-            //       child: Text("m"),
-            //     ),
-            //   ],
-            // ))
           ],
         ),
       ),
@@ -329,7 +332,20 @@ class FlightsUI extends StatelessWidget {
 class TripUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      color: Colors.white,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 30),
+          TitleText(
+            text: "From",
+            fontSize: 15.0,
+            color: Colors.black,
+          ),
+        ],
+      ),
+    );
   }
 }
 
